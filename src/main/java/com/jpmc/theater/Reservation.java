@@ -9,7 +9,6 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@NonNull
 public class Reservation {
     private Customer customer;
     private Showing showing;
@@ -20,7 +19,7 @@ public class Reservation {
      * @param showing The specific showing of the movie
      * @param audienceCount Amount of people included in this reservation
      */
-    public Reservation(Customer customer, Showing showing, int audienceCount) throws IllegalArgumentException {
+    public Reservation(@NonNull Customer customer, @NonNull Showing showing, int audienceCount) throws IllegalArgumentException {
         if (audienceCount <= 0) {
             throw new IllegalArgumentException(
                     String.format("The audience count provided is not valid: {%s}", audienceCount));

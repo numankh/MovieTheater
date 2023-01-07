@@ -30,7 +30,7 @@ public class TheaterTests {
     }
 
     @Test
-    void testIncorrectReservationSequence(){
+    void testInvalidReservationSequence(){
         final int numberOfTickets = 4;
         final int incorrectSequence = 0;
 

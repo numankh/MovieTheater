@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
  * allows a customer to select the showing that they want to make a reservation for
  */
 public class Theater {
-
     LocalDateProvider provider;
     private List<Showing> schedule;
 
@@ -46,7 +45,7 @@ public class Theater {
         try {
             showing = schedule.get(sequence - 1);
         } catch (RuntimeException ex) {
-            throw new IllegalStateException("Not able to find any showing for given sequence " + sequence);
+            throw new IllegalStateException("Not able to find any showing for given sequence: " + sequence);
         }
         return new Reservation(customer, showing, howManyTickets);
     }
@@ -55,8 +54,9 @@ public class Theater {
         System.out.println(provider.currentDate());
         System.out.println("===================================================");
         schedule.forEach(s ->
-                System.out.println(s.getSequenceOfTheDay() + ": " + s.getShowStartTime() + " | " + s.getMovie().getTitle() +
-                        " | " + s.getMovie().getDescription() + " | " + humanReadableFormat(s.getMovie().getRunningTime()) + " | $" + s.getMovie().getTicketPrice())
+                System.out.println(s.getSequenceOfTheDay() + ": " + s.getShowStartTime() + " | " +
+                        s.getMovie().getTitle() + " | " + s.getMovie().getDescription() + " | " +
+                        humanReadableFormat(s.getMovie().getRunningTime()) + " | $" + s.getMovie().getTicketPrice())
         );
         System.out.println("===================================================");
     }

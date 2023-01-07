@@ -36,7 +36,17 @@ public class ReservationTests {
     }
 
     @Test
-    void testIncorrectAudienceCount() {
+    void testInvalidAudienceCount() {
         assertThrows(IllegalArgumentException.class, () -> new Reservation(testCustomer, testShowing, 0));
+    }
+
+    @Test
+    void testNullCustomer() {
+        assertThrows(NullPointerException.class, () -> new Reservation(null, testShowing, 5));
+    }
+
+    @Test
+    void testNullShowing() {
+        assertThrows(NullPointerException.class, () -> new Reservation(testCustomer, null, 5));
     }
 }

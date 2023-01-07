@@ -17,18 +17,13 @@ import java.util.stream.DoubleStream;
 @Setter
 @EqualsAndHashCode
 public class Movie {
-    @NonNull
     private String title;
-    @NonNull
     private String description;
-    @NonNull
     private Duration runningTime;
-    @NonNull
     private double ticketPrice;
-    @NonNull
     private int specialCode;
 
-    private static int MOVIE_CODE_SPECIAL = 1;
+    private static final int MOVIE_CODE_SPECIAL = 1;
     private static final LocalTime LOWER_BOUND_TIME_DISCOUNT = LocalTime.parse("11:00:00.00");
     private static final LocalTime UPPER_BOUND_TIME_DISCOUNT = LocalTime.parse("16:00:00.00");
 
@@ -39,8 +34,8 @@ public class Movie {
      * @param ticketPrice Movie ticket price
      * @param specialCode Determine whether movie is eligible for the special discount
      */
-    public Movie(String title, String description, Duration runningTime, double ticketPrice, int specialCode)
-            throws IllegalArgumentException {
+    public Movie(@NonNull String title, @NonNull String description, @NonNull Duration runningTime,
+                 double ticketPrice, int specialCode) throws IllegalArgumentException {
         if (title.trim().isEmpty())
             throw new IllegalArgumentException("Invalid movie title");
         if (description.trim().isEmpty())

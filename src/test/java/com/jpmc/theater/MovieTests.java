@@ -112,6 +112,18 @@ public class MovieTests {
     }
 
     @Test
+    void testNullMovieForShowing() {
+        LocalDateTime localDateTime = LocalDateTime.of(2022, Month.DECEMBER, 7, 12, 0);
+        assertThrows(NullPointerException.class, () -> new Showing(null, 1, localDateTime));
+    }
+
+    @Test
+    void testNullStartTimeForShowing() {
+        Movie spiderMan = new Movie(testTitle, testDescription, testRunningTime, 12.0, 1);
+        assertThrows(NullPointerException.class, () -> new Showing(spiderMan, 1, null));
+    }
+
+    @Test
     void testNullMovieTitle() {
         assertThrows(NullPointerException.class, () -> new Movie(null, testDescription, testRunningTime, 12.0, 0));
     }
@@ -137,12 +149,12 @@ public class MovieTests {
     }
 
     @Test
-    void testNoMovieRunningTime() {
+    void testZeroRunningTime() {
         assertThrows(IllegalArgumentException.class, () -> new Movie(testTitle, testDescription, Duration.ofMinutes(0), 12.0, 0));
     }
 
     @Test
-    void testIncorrectTicketPrice() {
+    void testInvalidTicketPrice() {
         assertThrows(IllegalArgumentException.class, () -> new Movie(testTitle, testDescription, testRunningTime, -10.0, 0));
     }
 }

@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
  */
 @Getter
 @Setter
-@NonNull
 public class Showing {
     private Movie movie;
     private int sequenceOfTheDay;
@@ -22,7 +21,7 @@ public class Showing {
      * @param sequenceOfTheDay Sequentially which showing from the start of the day is this
      * @param showStartTime The date and time for the showing
      */
-    public Showing(Movie movie, int sequenceOfTheDay, LocalDateTime showStartTime) throws IllegalArgumentException {
+    public Showing(@NonNull Movie movie, int sequenceOfTheDay, @NonNull LocalDateTime showStartTime) throws IllegalArgumentException {
         if (sequenceOfTheDay < 1)
             throw new IllegalArgumentException("Sequence of the day must be a positive number");
 
